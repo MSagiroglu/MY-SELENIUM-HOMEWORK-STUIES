@@ -1,5 +1,6 @@
 package My_Homework_Studies;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class C07 {
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("LatifeDriver", "src/resources/drivers/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
