@@ -24,7 +24,7 @@ public class Q01 {
        int count=0;
        for (int i = 0; i < 100; i++) {
            AddButton=driver.findElement(By.xpath("//button[@onclick='addElement()']"));
-           AddButton.sendKeys(Keys.ENTER);
+           AddButton.click();
            count++;
        }
        System.out.println(count);
@@ -52,9 +52,8 @@ public class Q01 {
       }
 
         //Sayfayı kapatınız
-        driver.close();
-        System.out.println();
-        System.out.println();
+       // driver.close();
+
 
     }
 }
