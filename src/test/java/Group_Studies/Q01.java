@@ -53,6 +53,7 @@ public class Q01 {
 
         //Sayfayı kapatınız
         driver.close();
+        System.out.println();
 
     }
 }
