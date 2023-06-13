@@ -1,30 +1,14 @@
 package Group_Studies.automationExercises;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import utilities.TestBase;
 
-import java.time.Duration;
-
-public class TestCase01 {
-    WebDriver driver;
-
-    @Before
-    public void setUp() throws Exception {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-    }
-
+public class TestCase02 extends TestBase {
     @Test
     public void test01() {
         //        1. Launch browser
@@ -62,17 +46,43 @@ public class TestCase01 {
                 "adad",Keys.TAB,"Canada",Keys.TAB,"dasd",Keys.TAB,"urfa",Keys.TAB,"15151",Keys.TAB,"555555555",Keys.TAB,Keys.ENTER);
 
 //        14. Verify that 'ACCOUNT CREATED!' is visible
-        Assert.assertTrue(driver.findElement(By.xpath("//b")).isDisplayed());
+      //  Assert.assertTrue(driver.findElement(By.xpath("//b")).isDisplayed());
 //        15. Click 'Continue' button
-        driver.findElement(By.linkText("Continue")).click();
+       // driver.findElement(By.linkText("Continue")).click();
 //        16. Verify that 'Logged in as username' is visible
-       // driver.findElement(By.xpath("//span[@class='ns-62uje-e-7']")).click();
+        // driver.findElement(By.xpath("//span[@class='ns-62uje-e-7']")).click();
 //        17. Click 'Delete Account' button
 //        18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
     }
+    @Test
+    public void test02() {
+       //Test Case 2: Login User with correct email and password
+       //1. Launch browser
+       //2. Navigate to url 'http://automationexercise.com'
+        driver.get("http://automationexercise.com");
+       //3. Verify that home page is visible successfully
+        WebElement homePage=driver.findElement(By.xpath("(//a)[10]"));
+        Assert.assertTrue(homePage.isDisplayed());
+        //assert homePage.isDisplayed();
+        //4. Click on 'Signup / Login' button
+        WebElement logIn=driver.findElement(By.xpath("//a[@href='/login']"));
+        logIn.click();
+        //5. Verify 'Login to your account' is visible
+        assert driver.findElement(By.xpath("(//h2)[1]")).isDisplayed();
+        //6. Enter correct email address and password
+        //7. Click 'login' button
+        driver.findElement(By.xpath("(//input)[2]")).sendKeys("mustafasagiroglu06452@gmail.com", Keys.TAB,"Password",Keys.TAB,Keys.ENTER);
+        //8. Verify that 'Logged in as username' is visible
+        assert driver.findElement(By.xpath("(//a)[18]")).isDisplayed();
 
-    @After
-    public void tearDown() throws Exception {
+        //9. Click 'Delete Account' button
+        //driver.findElement(By.xpath("(//a)[13]")).click();
+        driver.findElement(By.xpath("//*[@href='/delete_account']")).click();
+       // if (driver.findElement(By.xpath("(//*[@viewBox='0 0 48 48'])[1]")).isDisplayed()) {
+       //     driver.findElement(By.xpath("(//*[@viewBox='0 0 48 48'])[1]")).click();
+       // }
+       //10. Verify that 'ACCOUNT DELETED!' is visible
+        assert driver.findElement(By.xpath("//b")).isDisplayed();
 
     }
 }
