@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class TestBase {
     protected static WebDriver driver;
@@ -18,20 +20,20 @@ public abstract class TestBase {
      Bu class'a extends yaptigimiz test class'larindan ulabiliriz
  */
 
-   @Before
-   public void setUp() throws Exception {
-       WebDriverManager.chromedriver().setup();
-       driver=new ChromeDriver();
-       driver.manage().window().maximize();
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-   }
+    @Before
+    public void setUp() throws Exception {
+        WebDriverManager.chromedriver().setup();
+        driver=new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+    }
 
-    @After
-    public void tearDown() throws Exception {
-        driver.quit();
-     }
+    //@After
+    //public void tearDown() throws Exception {
+    //    driver.quit();
+    // }
 
-  //HARD WAIT(bekleme metodu)
+    //HARD WAIT(bekleme metodu)
     public void bekle(int saniye){
         try {
             Thread.sleep(saniye*1000);
@@ -70,5 +72,17 @@ public abstract class TestBase {
         Select select=new Select(ddm);
         select.selectByValue(text);
     }
+
+    //SwitchTo Window-1
+    public void switchToWindow1(int index){
+        List<String> pencereler = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(pencereler.get(index));
+    }
+    //SwitchTo Window-2
+    public void switchToWindow2(int index){
+        driver.switchTo().window(driver.getWindowHandles().toArray()[index].toString());
+    }
+
+
 
 }
