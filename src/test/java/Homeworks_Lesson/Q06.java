@@ -1,4 +1,4 @@
-package My_Homework_Studies;
+package Homeworks_Lesson;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

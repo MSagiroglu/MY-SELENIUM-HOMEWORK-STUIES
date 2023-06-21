@@ -1,4 +1,4 @@
-package Group_Studies.automationExercises;
+package automationExercises;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;

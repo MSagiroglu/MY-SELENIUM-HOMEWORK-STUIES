@@ -1,4 +1,4 @@
-package Group_Studies.automationExercises;
+package automationExercises;
 
 import org.junit.Assert;
 import org.junit.Test;

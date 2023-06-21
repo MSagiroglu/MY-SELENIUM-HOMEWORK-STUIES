@@ -1,6 +1,6 @@
 package Group_Studies.DropDown;
 
-import UtilClass.TestBase;
+import utilities.TestBase;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,7 +17,7 @@ public class q04 extends TestBase {
      */
 
     @Test
-    public void tes01() {
+    public void tes01() throws InterruptedException {
         //-Amazon sayfasına gidelim
         driver.get("https://amazon.com");
         //-Arama Kutusundaki Dropdown menuyu yazdıralım
