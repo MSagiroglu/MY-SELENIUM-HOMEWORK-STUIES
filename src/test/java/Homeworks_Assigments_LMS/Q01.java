@@ -30,6 +30,27 @@ public class Q01 extends TestBase {
 
 
 
-        // - After methodu ile sayfayı kapatalım
+
+    }
+
+    @Test
+    public void test02() {
+        // - Before methodu ile drive'i olusturup ayarlamalari yapiniz
+        //         - ebay sayfasına gidiniz
+        driver.get("https://ebay.com");
+        // - electronics bölümüne tıklayınız
+        WebElement electronics=driver.findElement(By.xpath("//*[@class=\"hl-cat-nav__js-tab\"]"));
+        click(electronics);
+        // - Genişliği 225 ve Uzunluğu 225 olan resimlerin hepsine tıklayalım
+        List<WebElement> products=driver.findElements(By.xpath("//img[@width='225' and @height='225']"));
+       int count=1;
+        for (int i = 0; i < products.size(); i++) {
+            products=driver.findElements(By.xpath("//img[@width='225' and @height='225']"));
+            products.get(i).click();
+            System.out.println(count +". website = "+driver.getTitle());
+            count++;
+            driver.navigate().back();
+        }
+        // - Her sayfanın sayfa başlığını yazdıralım
     }
 }

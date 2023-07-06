@@ -64,4 +64,31 @@ public void test01() throws InterruptedException {
     }
 }
      */
+
+    @Test
+    public void test02() {
+        //  -Amazon sayfasına gidelim
+        driver.get("https://amazon.com");
+        //  -Arama Kutusundaki Dropdown menuyu yazdıralım
+        WebElement ddm=driver.findElement(By.xpath("//*[@aria-describedby=\"searchDropdownDescription\"]"));
+        Select select=new Select(ddm);
+        select.getOptions().forEach(w-> System.out.println(w.getText()));
+        //  -Dropdown menuden sırasıyla ilk 5 başlığı (Arts&Crafts ile başlayıp Books'a kadar Books dahil) seçip
+        //  başlık altındakileri aratalım. Her aramada sayfa başlığını yazdıralım
+        int count=1;
+        for (int i = 1; i < 6; i++) {
+            ddm=driver.findElement(By.xpath("//*[@aria-describedby=\"searchDropdownDescription\"]"));
+            select=new Select(ddm);
+            select.selectByIndex(i);
+            WebElement searchButton=driver.findElement(By.xpath("//*[@class=\"nav-search-submit nav-sprite\"]"));
+            searchButton.click();
+            System.out.println(count+". ddm options ="+ driver.getTitle());
+            count++;
+            //driver.navigate().back();
+
+
+        }
+
+        //  Not: Select Class'ı kullanalım
+    }
 }
