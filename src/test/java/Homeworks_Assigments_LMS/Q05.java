@@ -1,17 +1,43 @@
 package Homeworks_Assigments_LMS;
 
+import com.github.javafaker.App;
+import com.github.javafaker.Faker;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import utilities.TestBase;
 
-public class Q05 {
+public class Q05 extends TestBase {
     @Test
     public void test01() {
         // https://www.jqueryscript.net/demo/Easy-iFrame-based-Twitter-Emoji-Picker-Plugin-jQuery-Emoojis/ sitesine gidin
+       driver.get("https://www.jqueryscript.net/demo/Easy-iFrame-based-Twitter-Emoji-Picker-Plugin-jQuery-Emoojis/");
         // ikinci emojiye tıklayın
+        driver.switchTo().frame("emoojis");
+        WebElement secondEmoji=driver.findElement(By.xpath("(//span[@class=\"mdl-tabs__ripple-container mdl-js-ripple-effect\"])[2]"));
+        secondEmoji.click();
         // İkinci emoji öğelerini yazdırınız
+        WebElement  secondEmojielements=driver.findElement(By.xpath(" //div[@id='nature']//div"));
+        System.out.println("Secon Emoji Elements : \n "+secondEmojielements.getText());
         // Parent iframe e geri donun
+        driver.switchTo().defaultContent();
         // Formu doldurun,(Formu istediğiniz metinlerle doldurun)
+        Faker faker =new Faker();
+        WebElement textElement=driver.findElement(By.xpath("//*[@id=\"text\"]"));
+        textElement.sendKeys(faker.artist().name(), Keys.TAB,faker.artist().name(),Keys.TAB,faker.artist().name(),Keys.TAB,faker.artist().name(),
+                Keys.TAB,faker.artist().name(),Keys.TAB,faker.artist().name(),Keys.TAB,faker.artist().name(),Keys.TAB,faker.artist().name(),
+                Keys.TAB,faker.artist().name(),Keys.TAB,faker.artist().name(),Keys.TAB,faker.artist().name(),Keys.TAB);
         // Apply button a basiniz
+        WebElement ApplyButton=driver.findElement(By.xpath("//button[@id='send']"));
+        ApplyButton.click();
     }
+
+
+
+
+
+
     /*
     @Test
 public void test02() throws InterruptedException {
